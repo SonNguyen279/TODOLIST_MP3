@@ -13,23 +13,23 @@ const Slider = () => {
         const intervalId = setInterval(() => {
             const list = getArrSlider(min, max, sliderEls.length - 1)
             for (let i = 0; i < sliderEls.length; i++) {
-                    if(list.some(item => item === i)) {
-                        sliderEls[i].style.cssText = 'display: block'
-                    } else {
-                        sliderEls[i].style.cssText = 'display: none'
-                    }
+                if (list.some(item => item === i)) {
+                    sliderEls[i].style.cssText = `display: block`
+                } else {
+                    sliderEls[i].style.cssText = `display: none`
                 }
+            } 
             if (min === sliderEls.length - 1) {
                 min = 0
             } else {
                 min += 1
             }
             if (max === sliderEls.length - 1) {
-                min += 1
+                max = 0
             } else {
-                min += 1
+                max += 1
             }
-        }, 1000)
+            }, 1000)
         return () => {
             intervalId && clearInterval(intervalId)
         }
